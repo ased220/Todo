@@ -4,7 +4,7 @@ import type { MetaResponse, Todo, TodoInfo, TodoInfoCheck, TodoRequest } from ".
 export async function addTodo(obj: TodoRequest):Promise<Todo> { 
 
     try {
-      const response = await fetch('https://easydev.club/api/v1/todos', {
+      const response = await fetch('todos', {
         method: 'POST',
         body: JSON.stringify(obj)
       }
@@ -22,7 +22,7 @@ export async function addTodo(obj: TodoRequest):Promise<Todo> {
 export async function editTodo(obj: TodoRequest){
   
     try {
-      const response = await fetch(`https://easydev.club/api/v1/todos/${obj.id}`, {
+      const response = await fetch(`todos/${obj.id}`, {
         method: 'PUT',
         body: JSON.stringify(obj)
     })
@@ -39,7 +39,7 @@ export async function editTodo(obj: TodoRequest){
 
     try {
 
-      const response = await fetch(`https://easydev.club/api/v1/todos/${id}`, {method: 'DELETE'});
+      const response = await fetch(`/todos/${id}`, {method: 'DELETE'});
 
       if (!response.ok){
           throw new Error('Error')
@@ -57,7 +57,7 @@ export async function editTodo(obj: TodoRequest){
   
     try {
 
-        const response = await fetch(`https://easydev.club/api/v1/todos?filter=${status}`, { method: 'GET' });
+        const response = await fetch(`/todos?filter=${status}`, { method: 'GET' });
 
         if (!response.ok) {
           throw new Error(`Status: ${response.status}`);
